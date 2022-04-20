@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require("fs")
 const inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown")
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -33,7 +34,7 @@ const questions = () => {
         },
         {
             type: 'input',
-            name: 'install',
+            name: 'installation',
             message: 'Enter instructions to install your project.',
             validate: nameInput => {
                 if (nameInput) {
@@ -68,13 +69,18 @@ const questions = () => {
             name: 'license',
             message: 'Choose the projects license type',
             choices: [
-
+                "Apache_License_2.0",
+                "GNU_General_ Public_License_v3.0",
+                "MIT_License",
+                "Mozilla_Public_License_2.0",
+                "Eclipse_Public_License_2.0",
+                "Boost_Software_License_1.0",
+                "Creative_Commons_Zero_v1.0_Universal"
             ]
-
         },
         {
             type: 'input',
-            name: 'contributors',
+            name: 'contributions',
             message: 'Enter information regarding contributing to your project.',
             validate: nameInput => {
                 if (nameInput) {
@@ -114,13 +120,12 @@ const questions = () => {
     ])
 }
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+const writeToFile = (fileName, data) => {
     
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {questions()}
 
 // Function call to initialize app
 init();
