@@ -120,12 +120,24 @@ const questions = () => {
     ])
 }
 
-const writeToFile = (fileName, data) => {
-    
+const writeToFile = data => {
+    fs.writeFile('./dist/README.md', data, err => {
+        if (err) {
+            console.log(err)
+            return
+        } else {
+            console.log('Your README is complete, check it out!')
+        }
+    })
 }
 
-// TODO: Create a function to initialize app
-function init() {questions()}
-
-// Function call to initialize app
-init();
+questions()
+.then(answers => {
+    return generateMarkdown(answers)
+})
+.then(fileData => {
+    return writeToFile(fileData)
+})
+.catch(err => {
+    console.log(err)
+})
