@@ -1,9 +1,7 @@
-// TODO: Include packages needed for this application
 const fs = require("fs")
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown")
 
-// TODO: Create an array of questions for user input
 const questions = () => {
     return inquirer.prompt([
         {
@@ -126,7 +124,7 @@ const writeToFile = data => {
             console.log(err)
             return
         } else {
-            console.log('Your README is complete, check it out!')
+            console.log('Your README is complete, check it out in the dist folder!')
         }
     })
 }
